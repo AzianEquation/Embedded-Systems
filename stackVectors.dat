@@ -1,0 +1,23 @@
+//rst_push_pop_val_top_e_next_e_count_e
+// test reset pulse
+F_0_0_0000_XXXX_XXXX_00
+// push 1 to empty stack > top =1, counter = 1
+0_1_0_0001_0001_XXXX_01
+// push 2 -> top = 2 next = 1 counter = 2
+0_1_0_0002_0002_0001_02
+// push 3 -> top = 3 next = 2 counter = 3
+0_1_0_0003_0003_0002_03
+// pop -> top = 2 next = 1 counter = 2
+0_0_1_0000_0002_0001_02
+// push 4 -> top = 4 next = 2 counter = 3
+0_1_0_0004_0004_0002_03
+// push DEAD => top = DEAD next = 4 counter = 4
+0_1_0_DEAD_DEAD_0004_04
+// push BEEF => top = BEEF next = DEAD counter = 5
+0_1_0_BEEF_BEEF_DEAD_05
+// pop
+0_0_1_0000_DEAD_0004_04
+// pop
+0_0_1_0000_0004_0002_03
+// rst all signal
+F_0_0_0000_XXXX_XXXX_00
